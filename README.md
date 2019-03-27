@@ -1,37 +1,62 @@
-## Welcome to GitHub Pages
+# react-blog
 
-You can use the [editor on GitHub](https://github.com/sabertazimi/sabertazimi.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+[![Build Status](https://travis-ci.org/sabertazimi/react-blog.svg?branch=master)](https://travis-ci.org/sabertazimi/react-blog)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a182a53a-297d-425b-88d6-323ce7039495/deploy-status)](https://app.netlify.com/sites/tazimi/deploys)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+A [blog](https://blog.tazimi.dev) system based on React, Semantic UI and Gatsby.
 
-### Markdown
+## Features
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+- Add posts to `src/pages`
+- Tags cloud page
+- Books page
+- Github information card
+- Beautiful footer
+- Scroll to top/bottom fixed buttons
+- Social share fixed buttons
+- Nice animation
+- Typing effect for title
+
+## Post Template
+
+yaml front + markdown body
 
 ```markdown
-Syntax highlighted code block
+---
+layout:     post
+title:      "JavaScript Basic Notes"
+subtitle:   "Daily I learned"
+author:     "sabertazimi"
+date:       2019-02-29
+tags:
+    - Web
+    - Front End
+    - JavaScript
+---
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+content ...
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## Installation
 
-### Jekyll Themes
+```bash
+npm install
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/sabertazimi/sabertazimi.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## Development
 
-### Support or Contact
+```bash
+# http://localhost:8000
+npm start
+```
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## Deployment
+
+```bash
+# deploy public/ directory with nginx server etc.
+npm run build
+```
+
+## Reference
+
+- [Bungee Font](https://fonts.google.com/specimen/Bungee)
