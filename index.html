@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <meta name="theme-color" content="#000000" />
-    <meta http-equiv="refresh" content="1; URL='https://blog.tazimi.dev'" />
+    <meta http-equiv="refresh" content="2; URL='https://blog.tazimi.dev'" />
     <link rel="canonical" href="https://blog.tazimi.dev" />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <title>Sabertaz Blog</title>
@@ -16,43 +16,85 @@
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
         align-content: center;
-
+        align-items: center;
+        justify-content: center;
         width: 100%;
         max-width: 100%;
         height: 100vh;
         max-height: 100vh;
-        margin: 0;
         padding: 0;
-
-        background-image: linear-gradient(120deg, #2b488a, #ca3749);
-        color: #f8f9fa;
+        margin: 0;
         font-family: sans-serif;
-      }
-
-      h1 {
-        font-size: 64px;
-        font-size: 4rem;
+        color: #f8f9fa;
+        background-image: linear-gradient(120deg, #2b488a, #ca3749);
       }
 
       p {
-        font-size: 24px;
-        font-size: 1.5rem;
+        font-size: 20px;
+        font-size: 1.25rem;
       }
 
       a {
+        font-size: 20px;
+        font-size: 1.25rem;
         color: #94d82d;
-        font-size: 24px;
-        font-size: 1.5rem;
+      }
+
+      .spinner {
+        width: 100px;
+        height: 80px;
+        margin: 5px auto;
+        font-size: 10px;
+        text-align: center;
+        background-color: transparent;
+      }
+
+      .spinner > div {
+        display: inline-block;
+        width: 12px;
+        height: 100%;
+        background-color: #f8f9fa;
+        animation: delay 1.2s infinite ease-in-out;
+      }
+
+      .spinner .rect2 {
+        animation-delay: -1.1s;
+      }
+
+      .spinner .rect3 {
+        animation-delay: -1s;
+      }
+
+      .spinner .rect4 {
+        animation-delay: -0.9s;
+      }
+
+      .spinner .rect5 {
+        animation-delay: -0.8s;
+      }
+
+      @keyframes delay {
+        0%,
+        40%,
+        100% {
+          transform: scaleY(0.4);
+        }
+
+        20% {
+          transform: scaleY(1);
+        }
       }
     </style>
   </head>
   <body>
-    <h1>Sabertaz Blog</h1>
-    <p>
-      Redirecting to <a href="https://blog.tazimi.dev">Sabertaz Blog</a> ...
-    </p>
+    <div class="spinner">
+      <div class="rect1"></div>
+      <div class="rect2"></div>
+      <div class="rect3"></div>
+      <div class="rect4"></div>
+      <div class="rect5"></div>
+    </div>
+    <p>Redirecting to <a href="https://blog.tazimi.dev">Sabertaz Blog</a></p>
   </body>
 </html>
