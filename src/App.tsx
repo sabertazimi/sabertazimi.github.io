@@ -62,7 +62,7 @@ function App() {
             <DockIcon key={item.label}>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button variant="ghost" size="icon" aria-label={item.label}>
+                  <Button variant="ghost" size="icon-xl" aria-label={item.label} className="rounded-full">
                     <a href={item.href} target="_blank" rel="noopener noreferrer">
                       <item.icon className="size-6" />
                     </a>
@@ -79,7 +79,7 @@ function App() {
             <DockIcon key={name}>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button variant="ghost" size="icon" aria-label={social.name}>
+                  <Button variant="ghost" size="icon-xl" aria-label={social.name} className="rounded-full">
                     <a href={social.url} target="_blank" rel="noopener noreferrer">
                       <social.icon className="size-6" />
                     </a>
@@ -92,7 +92,9 @@ function App() {
             </DockIcon>
           ))}
           <Separator orientation="vertical" className="h-full" />
-          <AnimatedThemeToggler />
+          <DockIcon>
+            <AnimatedThemeToggler size="icon-xl" className="rounded-full" iconClassName="size-6" />
+          </DockIcon>
         </Dock>
       </TooltipProvider>
     </BackgroundPaths>

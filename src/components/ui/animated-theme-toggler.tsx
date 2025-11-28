@@ -1,3 +1,4 @@
+import type { ButtonProps } from '@/components/ui/button'
 import { Moon, Sun } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
@@ -5,10 +6,18 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 interface AnimatedThemeTogglerProps extends React.ComponentPropsWithoutRef<'button'> {
+  size?: ButtonProps['size']
+  iconClassName?: string
   duration?: number
 }
 
-export function AnimatedThemeToggler({ className, duration = 400, ...props }: AnimatedThemeTogglerProps) {
+export function AnimatedThemeToggler({
+  className,
+  size = 'icon-xl',
+  iconClassName,
+  duration = 400,
+  ...props
+}: AnimatedThemeTogglerProps) {
   const [isDark, setIsDark] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
 
@@ -63,13 +72,13 @@ export function AnimatedThemeToggler({ className, duration = 400, ...props }: An
     <Button
       ref={buttonRef}
       variant="ghost"
-      size="icon"
+      size={size}
       // eslint-disable-next-line ts/no-misused-promises -- toggleTheme is a valid promise
       onClick={toggleTheme}
-      className={cn(className)}
+      className={cn('rounded-full', className)}
       {...props}
     >
-      {isDark ? <Moon className="size-6" /> : <Sun className="size-6" />}
+      {isDark ? <Moon className={cn('size-6', iconClassName)} /> : <Sun className={cn('size-6', iconClassName)} />}
       <span className="sr-only">Toggle theme</span>
     </Button>
   )
