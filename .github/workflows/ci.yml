@@ -1,0 +1,124 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - '*'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          submodules: true
+          fetch-depth: 1
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+      - name: Setup Node environment
+        uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+          check-latest: true
+          architecture: x64
+          registry-url: https://registry.npmjs.org/
+          cache: pnpm
+      - name: Install dependencies
+        run: |
+          pnpm install
+      - name: Run linter tests
+        run: |
+          pnpm lint
+
+  build:
+    name: Build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node-version: [lts/*]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          submodules: true
+          fetch-depth: 0 # Keep `0` for git time
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+      - name: Setup Node environment
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node-version }}
+          check-latest: true
+          architecture: x64
+          registry-url: https://registry.npmjs.org/
+          cache: pnpm
+      - name: Install dependencies
+        run: |
+          pnpm install
+      - name: Build application
+        run: |
+          pnpm build
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v5
+        if: ${{ matrix.node-version == 'lts/*' && matrix.os == 'ubuntu-latest' }}
+        with:
+          name: dist
+          path: dist
+
+  deploy:
+    name: Deploy
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    needs: [lint, build]
+    steps:
+      - name: Download production artifacts
+        uses: actions/download-artifact@v6
+        with:
+          name: dist
+          path: dist
+      - name: List production artifacts
+        run: |
+          ls -R
+        working-directory: .
+      - name: Deploy to Github Pages
+        uses: peaceiris/actions-gh-pages@v4
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          force_orphan: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: ${{ github.event.head_commit.message }}
+
+  publish:
+    name: Publish
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    needs: [lint, build]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          submodules: true
+          fetch-depth: 0
+      - name: Setup Node environment
+        uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+          check-latest: true
+          architecture: x64
+          registry-url: https://registry.npmjs.org/
+      - name: Release to GitHub
+        run: |
+          npx changelogithub
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
