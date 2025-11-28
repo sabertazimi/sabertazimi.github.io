@@ -47,19 +47,20 @@ function FloatingPaths({ position }: { position: number }) {
 
 export interface BackgroundPathsProps {
   title?: string
+  background?: React.ReactNode
   children?: React.ReactNode
 }
 
-export function BackgroundPaths({ title = 'Background Paths', children }: BackgroundPathsProps) {
+export function BackgroundPaths({ title = 'Background Paths', background, children }: BackgroundPathsProps) {
   const words = title.split(' ')
 
   return (
     <div className="bg-primary-foreground relative flex min-h-screen w-full items-center justify-center overflow-hidden">
+      {background}
       <div className="absolute inset-0">
         <FloatingPaths position={1} />
         <FloatingPaths position={-1} />
       </div>
-
       <div className="relative z-10 container mx-auto px-4 text-center md:px-6">
         <motion.div
           initial={{ opacity: 0 }}

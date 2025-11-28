@@ -4,6 +4,7 @@ import { AnimatedThemeToggler } from '@/components/ui/animated-theme-toggler'
 import { BackgroundPaths } from '@/components/ui/background-paths'
 import { Button } from '@/components/ui/button'
 import { Dock, DockIcon } from '@/components/ui/dock'
+import { FlickeringGrid } from '@/components/ui/flickering-grid'
 import { Separator } from '@/components/ui/separator'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 
@@ -40,7 +41,21 @@ const Links = {
 
 function App() {
   return (
-    <BackgroundPaths title="Sabertaz">
+    <BackgroundPaths
+      title="Sabertaz"
+      background={(
+        <div className="absolute top-0 left-0 z-0 h-screen w-full mask-[linear-gradient(to_top,transparent_25%,black_95%)]">
+          <FlickeringGrid
+            className="absolute top-0 left-0 size-full"
+            squareSize={4}
+            gridGap={6}
+            color="#6B7280"
+            maxOpacity={0.5}
+            flickerChance={0.1}
+          />
+        </div>
+      )}
+    >
       <TooltipProvider>
         <Dock direction="middle">
           {Links.navbar.map(item => (
