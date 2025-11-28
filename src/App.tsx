@@ -92,7 +92,9 @@ function App() {
             </DockIcon>
           ))}
           <Separator orientation="vertical" className="h-full" />
-          <AnimatedThemeToggler />
+          <DockIcon>
+            <AnimatedThemeToggler />
+          </DockIcon>
         </Dock>
       </TooltipProvider>
     </BackgroundPaths>
