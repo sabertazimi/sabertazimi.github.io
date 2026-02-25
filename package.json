@@ -29,8 +29,8 @@
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
-    "@dg-scripts/eslint-config": "^6.1.0",
-    "@dg-scripts/stylelint-config": "^6.1.0",
+    "@dg-scripts/eslint-config": "^6.1.1",
+    "@dg-scripts/stylelint-config": "^6.1.1",
     "@tailwindcss/vite": "^4.2.0",
     "@types/node": "^24.10.13",
     "@types/react": "^19.2.14",
@@ -38,7 +38,7 @@
     "@vitejs/plugin-react": "^5.1.4",
     "babel-plugin-react-compiler": "^1.0.0",
     "commit-and-tag-version": "^12.6.1",
-    "eslint": "^9.39.3",
+    "eslint": "^10.0.2",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "stylelint": "^17.3.0",
