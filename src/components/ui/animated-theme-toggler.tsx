@@ -73,7 +73,7 @@ export function AnimatedThemeToggler({
       ref={buttonRef}
       variant="ghost"
       size={size}
-      // eslint-disable-next-line ts/no-misused-promises -- toggleTheme is a valid promise
+
       onClick={toggleTheme}
       className={cn('rounded-full', className)}
       {...props}

@@ -3,7 +3,8 @@ import type { MotionProps, MotionValue } from 'motion/react'
 import type { PropsWithChildren } from 'react'
 import { cva } from 'class-variance-authority'
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react'
-import React, { useRef } from 'react'
+import * as React from 'react'
+import { useRef } from 'react'
 import { cn } from '@/lib/utils'
 
 export interface DockProps extends VariantProps<typeof dockVariants> {
@@ -39,7 +40,6 @@ function Dock({
   const mouseX = useMotionValue(Infinity)
 
   const renderChildren = () => {
-    // eslint-disable-next-line ts/promise-function-async -- not a promise function
     return React.Children.map(children, (child) => {
       if (React.isValidElement<DockIconProps>(child) && child.type === DockIcon) {
         return React.cloneElement(child, {
