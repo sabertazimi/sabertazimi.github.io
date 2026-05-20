@@ -10,6 +10,7 @@ export default defineConfig(
       'react/no-array-index-key': 'off',
       'react/no-children-map': 'off',
       'react/no-clone-element': 'off',
+      'react/set-state-in-effect': 'off',
       'react-hooks/purity': 'off',
       'react-hooks-extra/no-direct-set-state-in-use-effect': 'off',
       'react-refresh/only-export-components': 'off',
