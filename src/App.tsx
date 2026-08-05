@@ -17,7 +17,7 @@ const Links = {
     social: {
       GitHub: {
         name: 'GitHub',
-        url: 'https://github.com/sabertazimi',
+        url: 'https://github.com/sabertaz',
         icon: SiGithub,
       },
       X: {
